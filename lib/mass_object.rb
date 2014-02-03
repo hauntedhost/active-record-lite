@@ -1,11 +1,11 @@
 class MassObject
-  def self.set_attrs(*attributes)
+  def self.my_attr_accessor(*attributes)
     @attributes = attributes
     attr_accessor *attributes
   end
 
   def self.attributes
-    @attributes
+    @attributes || []
   end
 
   def self.parse_all(results)
@@ -18,6 +18,8 @@ class MassObject
       if attributes.include?(attr_name)
         operation = "#{attr_name}=".to_sym
         self.send(operation, value)
+      else
+        raise "mass assignment to unregistered attribute '#{attr_name}'"
       end
     end
   end
@@ -29,13 +31,4 @@ class MassObject
   def table_name
     self.class.table_name
   end
-end
-
-if __FILE__ == $0
-  class MyMassObject < MassObject
-    set_attrs(:x, :y, :z)
-  end
-
-  obj = MyMassObject.new(:x => :x_val, :y => :y_val, :z => :z_val)
-  p obj
 end

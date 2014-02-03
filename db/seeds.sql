@@ -1,3 +1,7 @@
+DROP TABLE cats;
+DROP TABLE humans;
+DROP TABLE houses;
+
 CREATE TABLE cats (
   id INTEGER PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
@@ -20,6 +24,7 @@ CREATE TABLE houses (
   address VARCHAR(255) NOT NULL
 );
 
+INSERT INTO houses (address) VALUES ("830 Brooks Avenue");
 INSERT INTO houses (address) VALUES ("1850 Dwight Way");
 INSERT INTO humans (fname, lname, house_id) VALUES ("Sean", "Omlor", 1);
 INSERT INTO humans (fname, lname, house_id) VALUES ("Alli", "Crawford", 1);
