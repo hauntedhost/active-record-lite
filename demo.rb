@@ -10,7 +10,7 @@ DBConnection.open("db/cats.sqlite3")
 class Cat < SQLObject
   my_attr_accessor :id, :name, :owner_id
 
-  belongs_to :human, :foreign_key => :owner_id
+  belongs_to :human, foreign_key: :owner_id
   has_one_through :house, :human, :house
 end
 
@@ -19,7 +19,7 @@ class Human < SQLObject
   set_table_name "humans" # override table_name (default is "humans" anyway)
   my_attr_accessor :id, :fname, :lname, :house_id
 
-  has_many :cats, :foreign_key => :owner_id
+  has_many :cats, foreign_key: :owner_id
   belongs_to :house
 end
 
