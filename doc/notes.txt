@@ -3,43 +3,40 @@ cat model:
 i want to create this has_one :through association
 
 MY_ASSOC_PARAMS: {:human=>
-	{:class_name=>"Human", :foreign_key=>:owner_id, :primary_key=>:id}}
+  {:class_name=>"Human", :foreign_key=>:owner_id, :primary_key=>:id}}
 
 has_one_through
-	:house, (association i want to create)
-	:through => human (my association)
-	:source = House (association 2, inside association1)
+  :house, (association i want to create)
+  :through => human (my association)
+  :source = House (association 2, inside association1)
 
-	SELECT *
-	FROM houses
-	JOIN humans ON humans.house_id = houses.id
-	WHERE humans.id = 2
-	LIMIT 1;
+  SELECT *
+  FROM houses
+  JOIN humans ON humans.house_id = houses.id
+  WHERE humans.id = 2
+  LIMIT 1;
 
 
-	SELECT *
-	FROM houses
-	JOIN humans ON humans.id = houses.human_id
-	WHERE humans.id = ?
-	LIMIT 1;
+  SELECT *
+  FROM houses
+  JOIN humans ON humans.id = houses.human_id
+  WHERE humans.id = ?
+  LIMIT 1;
 
 
 i have this association:
 
 :human => association 1 (belongs_to)
-	SELECT *
-	FROM humans
-	WHERE humans.id = ?
-	LIMIT 1;
+  SELECT *
+  FROM humans
+  WHERE humans.id = ?
+  LIMIT 1;
 
 ------------------------------------------
 human model:
 
 :house => association 2 (belongs_to)
-	SELECT * 
-	FROM house
-	WHERE house.id = ?
-	LIMIT 1;
-
-
-
+  SELECT *
+  FROM house
+  WHERE house.id = ?
+  LIMIT 1;

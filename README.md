@@ -47,7 +47,7 @@ For this reason ``has_many`` and ``belongs_to`` associations accept overrides fo
 ```ruby
 has_many :cats,
   foreign_key: :owner_id,
-  class_name: "Cat",
+  class_name: 'Cat',
   primary_key: :id
 ```
 
@@ -55,7 +55,7 @@ In this example, the table name ``"humans"`` will be inferred. To override the d
 ```ruby
 # define house model
 class House < SQLObject
-  set_table_name "houses"
+  set_table_name 'houses'
   my_attr_accessor :id, :address
 
   has_many :humans
@@ -65,7 +65,7 @@ end
 Last, there is support for ``has_one_through``:
 ```ruby
 class Cat < SQLObject
-  set_table_name "cats"
+  set_table_name 'cats'
   my_attr_accessor :id, :name, :owner_id
 
   belongs_to :human, foreign_key: :owner_id

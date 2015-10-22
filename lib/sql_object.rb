@@ -62,7 +62,7 @@ class SQLObject < MassObject
   end
 
   def update
-    set = attribute_keys.map { |key| "#{key} = ?" }.join(", ")
+    set = attribute_keys.map { |key| "#{key} = ?" }.join(', ')
     values = attribute_values
 
     # build and execute query

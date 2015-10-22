@@ -1,9 +1,9 @@
 module Searchable
   def where(params)
     # OPTIMIZE: raise error if any param key does not exist
-    # e.g., raise "NOPE" unless attributes.include?(key)
+    # e.g., raise 'NOPE' unless attributes.include?(key)
 
-    where_clauses = params.keys.map { |key| "#{key} = ?" }.join( " AND ")
+    where_clauses = params.keys.map { |key| "#{key} = ?" }.join(' AND ')
     values = params.values
 
     query = <<-SQL
